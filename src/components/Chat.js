@@ -1,6 +1,9 @@
 import { StyleSheet, Text, View, Image, FlatList, SafeAreaView, TouchableOpacity } from 'react-native';
-
-
+import Icon from 'react-native-vector-icons/FontAwesome';
+import HomeIcon from 'react-native-vector-icons/Octicons';
+import Left from 'react-native-vector-icons/Fontisto';
+import Cart from  'react-native-vector-icons/MaterialCommunityIcons'
+import Back from  'react-native-vector-icons/Ionicons'
 
 export default function Chat() {
     const data = [
@@ -8,81 +11,70 @@ export default function Chat() {
         id: 1,
         title: 'Ca nấu lẩu, nấu mì mini',
         shop: 'Devang',
-        imgUrl:'/src/images/ca_nau_lau.png'
+        imgUrl: require('/src/images/ca_nau_lau.png')
     },
 
     {
         id: 2,
         title: '1 KG gà bơ tỏi',
         shop: 'LTD Food',
-        imgUrl:'/src/images/ga_bo_toi.png'
+        imgUrl: require('/src/images/ga_bo_toi.png')
     },
 
     {
         id: 3,
         title: 'Xe cần cẩu đa năng',
         shop: 'Thế giới đồ chơi',
-        imgUrl:'/src/images/xa_can_cau.png'
+        imgUrl: require('/src/images/xa_can_cau.png')
     },
 
     {
         id: 4,
         title: 'Đồ chơi dạng mô hình',
         shop: 'Thế giới đồ chơi',
-        imgUrl:'/src/images/do_choi_dang_mo_hinh.png'
+        imgUrl: require('/src/images/do_choi_dang_mo_hinh.png')
     },
 
     {
         id: 5,
         title: 'Lãnh đạo giản đơn',
         shop: 'Minh Long Book',
-        imgUrl:'/src/images/lanh_dao_gian_don.png'
+        imgUrl: require('/src/images/lanh_dao_gian_don.png')
     },
 
     {
         id: 6,
         title: 'Hiểu lòng con trẻ',
         shop: 'Minh Long Book',
-        imgUrl:'/src/images/hieu_long_con_tre.png'
+        imgUrl: require('/src/images/hieu_long_con_tre.png')
+    },
+
+    {
+        id: 7,
+        title: 'Hiểu lòng con trẻ',
+        shop: 'Minh Long Book',
+        imgUrl: require('/src/images/hieu_long_con_tre.png')
+    },
+
+    {
+        id: 8,
+        title: 'Lãnh đạo giản đơn',
+        shop: 'Minh Long Book',
+        imgUrl: require('/src/images/lanh_dao_gian_don.png')
     },
 
 ]
 
-    function Item ({title, shop, imgUrl}) {
-        <View style={styles.item}>
-            <Image
-                    source = {{uri:imgUrl}}
-                    style = {{width:'74px', height:'74px'}}
-            />
-            <View style = {{flexDirection:'column'}}>
-                <Text style={styles.title}>{title}</Text>
-                <Text style={styles.title}>{shop}</Text>
-            </View>
-
-            <TouchableOpacity 
-                  style={styles.btnChat}>
-                    
-                <Text style = {styles.txtChat}>Chat</Text>
-
-            </TouchableOpacity> 
-        </View>
-    };
-
     return (
         <View style = {styles.container}>
             <View style = {styles.head}>
-                <Image
-                    source = {require('/src/images/back.png')}
-                    style = {styles.imgBack}
-                />
+                <Back name='arrow-back' size={25} color={'white'} style={{left:'17px', top:'6px'}}/>
 
 
                 <Text style = {styles.txtChat}>Chat</Text>
 
-                <Image
-                    source = {require('/src/images/cart.png')}
-                    style = {styles.imgCart}
-                />
+                <Cart name='cart-check' size={25} color={'white'} style={{left:'260px', top:'6px'}}/>
+
             </View>
 
             <Text style = {styles.txtHoi}>Bạn có thắc mắc với sản phẩm vừa xem đừng ngại chat với shop!</Text>
@@ -95,16 +87,27 @@ export default function Chat() {
                             <View style = {styles.item}>
                                 <Image
                                     source = {{uri:item.imgUrl}}
-                                    style = {{width:'74px', height:'74px'}}
+                                    style = {{width:'80px', height:'80px'}}
+                                    resizeMode='contain'
                                 />
-                                <View style = {{flexDirection:'column'}}>
+
+                                <View style = {{flexDirection:'column', width:'200px', paddingTop: '5px', left: '10px'}}>
                                     <Text style={styles.title}>{item.title}</Text>
-                                    <Text style={styles.title}>{item.shop}</Text>
+                                    <Text style={{...styles.title, color:'red', top:'10px'}}>Shop: {item.shop}</Text>
                                 </View>
+
+                                <View style={{justifyContent:'center', alignItems:'center'}}>
+                                    <TouchableOpacity style={styles.btnChat}>
+                                        <Text style = {{fontSize:'20px', color:'white', textAlign:'center', top:'3px'}}>Chat</Text>
+                                    </TouchableOpacity>
+                                </View>
+
+                                
                             </View>
                           )}
                         keyExtractor={item => item.id}
-
+                        contentContainerStyle={{marginBottom: 45}}
+                      
                     />
 
                 </SafeAreaView>
@@ -112,7 +115,9 @@ export default function Chat() {
 
 
             <View style = {styles.end}>
-
+                <Icon name="bars" size={30} style={{left:'30px'}}/>                
+                <HomeIcon name='home' size={30} style={{left:'150px'}}/>
+                <Left name='arrow-return-left'size={30} style={{left:'280px'}}/>
             </View>
         </View>
     );
@@ -133,7 +138,6 @@ const styles = StyleSheet.create({
     mid:{
         width: '100%',
         height:'auto',
-        backgroundColor: 'yellow'
     },
 
     end:{
@@ -141,6 +145,9 @@ const styles = StyleSheet.create({
         height: '50px',
         backgroundColor:'#1BA9FF',
         flexDirection: 'row',
+        position: 'fixed',
+        bottom: '0px',
+        alignItems:'center',
     },
 
     txtChat:{
@@ -157,42 +164,30 @@ const styles = StyleSheet.create({
         width: '294px',
         height: '28.54px',
         left: '31.58px',
-        margin:'10px'
+        margin:'20px',
+        marginTop:'10px'
     },
 
     btnChat:{
         width: '88px',
         height: '38px',
-        top: '125px',
-        left: '246px',
-        backgroundColor: '#F31111'
+        backgroundColor: '#F31111',
 
-    },
-
-    imgBack:{
-        width: '24px',
-        height: '24px',
-        top:'6px',
-        left: '17px'
-    },
-
-    imgCart:{
-        width: '24px',
-        height: '24px',
-        top:'6px',
-        left: '260px'
     },
 
     item: {
-        backgroundColor: '#f9c2ff',
         width: '100%',
-        height:'80px',
-        marginTop: '20px',
-        flexDirection:'row'
+        height:'105px',
+        flexDirection:'row',
+        paddingLeft:'10px',
+        paddingRight:'10px',
+        paddingTop:'10px',
+        borderTopWidth: 0.5,
+        borderColor: '#C4C4C4',
       },
 
       title: {
-        fontSize: '20px',
+        fontSize: '15px',
       },
 
 });
