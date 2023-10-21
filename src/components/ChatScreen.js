@@ -1,11 +1,11 @@
 import { StyleSheet, Text, View, Image, FlatList, SafeAreaView, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import HomeIcon from 'react-native-vector-icons/Octicons';
-import Left from 'react-native-vector-icons/Fontisto';
-import Cart from  'react-native-vector-icons/MaterialCommunityIcons'
-import Back from  'react-native-vector-icons/Ionicons'
+import Octicons from 'react-native-vector-icons/Octicons';
+import Fontisto from 'react-native-vector-icons/Fontisto';
+import MaterialCommunityIcons from  'react-native-vector-icons/MaterialCommunityIcons'
+import Ionicons from  'react-native-vector-icons/Ionicons'
 
-export default function Chat() {
+export default function ChatScreen() {
     const data = [
     {
         id: 1,
@@ -68,12 +68,11 @@ export default function Chat() {
     return (
         <View style = {styles.container}>
             <View style = {styles.head}>
-                <Back name='arrow-back' size={25} color={'white'} style={{left:'17px', top:'6px'}}/>
-
+                <Ionicons name='arrow-back' size={25} color={'white'} style={{left:'17px'}}/>
 
                 <Text style = {styles.txtChat}>Chat</Text>
 
-                <Cart name='cart-check' size={25} color={'white'} style={{left:'260px', top:'6px'}}/>
+                <MaterialCommunityIcons name='cart-check' size={25} color={'white'} style={{left:'260px'}}/>
 
             </View>
 
@@ -116,8 +115,8 @@ export default function Chat() {
 
             <View style = {styles.end}>
                 <Icon name="bars" size={30} style={{left:'30px'}}/>                
-                <HomeIcon name='home' size={30} style={{left:'150px'}}/>
-                <Left name='arrow-return-left'size={30} style={{left:'280px'}}/>
+                <Octicons name='home' size={30} style={{left:'150px'}}/>
+                <Fontisto name='arrow-return-left'size={30} style={{left:'280px'}}/>
             </View>
         </View>
     );
@@ -132,7 +131,8 @@ const styles = StyleSheet.create({
         width:'100%',
         height: '42px',
         backgroundColor:'#1BA9FF',
-        flexDirection: 'row'
+        flexDirection: 'row',
+        alignItems:'center',
     },
 
     mid:{
@@ -153,9 +153,9 @@ const styles = StyleSheet.create({
     txtChat:{
         width: '60px',
         height:' 60px',
-        top: '5px',
         textAlign:'center',
         left:'140px',
+        top:'14px',
         color: 'white',
         fontSize: '20px'
     },
