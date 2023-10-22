@@ -204,7 +204,7 @@ export default function FindItemScreen() {
         backgroundColor:'#1BA9FF',
         flexDirection: 'row',
         position: 'fixed',
-        bottom: '0px',
+        bottom: 0,
         alignItems:'center',
     },
 
